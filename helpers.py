@@ -219,7 +219,7 @@ def to_kronos(df: pd.DataFrame, columns: Columns) -> pd.DataFrame:
     kronos_columns = ("timestamps", "open", "high", "low", "close", "volume", "amount")
 
     """
-    Приводит df из формата проекта к формату Kronos.
+    Приводит df к формату Kronos.
 
     Kronos ожидает колонки:
         timestamps, open, high, low, close, volume, amount
@@ -233,7 +233,7 @@ def to_kronos(df: pd.DataFrame, columns: Columns) -> pd.DataFrame:
         columns.close: "close",
         columns.volume: "volume",
     }
-    missing = [c for c in rename if c not in df.columns]
+    missing = [column for column in rename if column not in df.columns]
     if missing:
         raise KeyError(f"Для Kronos отсутствуют колонки: {missing}")
 
